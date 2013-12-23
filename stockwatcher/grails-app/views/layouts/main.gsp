@@ -77,7 +77,7 @@
                             <div class="nav-collapse collapse">
                                 <!-- .nav -->
                                 <ul class="nav">
-                                    <li class="active"><a href="/stockwatcher/">Dashboard</a></li>
+                                    <li class="active"><g:link controller="book" action="list">Dashboard</g:link></li>
                                      <li class="dropdown">
                                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                             Investments <b class="caret"></b>
@@ -150,7 +150,7 @@
                 <!-- .user-media -->
                 <div class="media user-media hidden-phone">
                     <a href="" class="user-link">
-                        <img src="images/swt/img/user.gif" alt="" class="media-object img-polaroid user-img">
+                        <img src="${resource(dir: 'images/swt/img', file: 'user.gif')}  class="media-object img-polaroid user-img">
                         <span class="label user-label">EMPC221</span>
                     </a>
 
@@ -168,26 +168,32 @@
 
                 <!-- BEGIN MAIN NAVIGATION -->
                 <ul id="menu" class="unstyled accordion collapse in">
-                	<li><a href="table.html"><i class="icon-money icon-large "></i> Dashboard</a></li>
+                	<li><g:link controller="dashboard" action="show"><i class="icon-money icon-large "></i> Dashboard ->${activeSection}<- test
+                	</g:link></a></li>
                     <li class="accordion-group">
-                        <a data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#dashboard-nav">
-                            <i class="icon-sun icon-large"></i> Investments 
-                        </a>
-                        <ul class="collapse out" id="dashboard-nav">                            
-                            <li><a href="alterne.html"><i class="icon-angle-right"></i> Stocks<span
-                                class="label label-inverse pull-right">7</span></a></li>
-                            <li><a href="alterne.html"><i class="icon-angle-right"></i> Mutual Funds</a></li>
-                            <li><a href="alterne.html"><i class="icon-angle-right"></i> Bullion</a></li>
-                            <li><a href="alterne.html"><i class="icon-angle-right"></i> Loans</a></li>
-                            <li><a href="alterne.html"><i class="icon-angle-right"></i> Property</a></li>
-                            <li><a href="alterne.html"><i class="icon-angle-right"></i> Assets</a></li>
+					<a data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#dashboard-nav">
+                           <i class="icon-sun icon-large"></i> Investments
+                    </a>
+					 <g:if test="${activeSection == 'investments'}">
+                        <ul class="collapse in" id="dashboard-nav"> 
+                      </g:if>
+					<g:else>
+						<ul class="collapse out" id="dashboard-nav">
+					</g:else>                           
+                            <li><g:link controller="stocks" action="show"><i class="icon-angle-right"></i> Stocks<span
+                                class="label label-inverse pull-right">7</span></g:link></li>
+                            <li><g:link controller="mutualFunds" action="show"><i class="icon-angle-right"></i> Mutual Funds</g:link></li>
+                            <li><g:link controller="bullion" action="show"><i class="icon-angle-right"></i> Bullion</g:link></li>
+                            <li><g:link controller="loans" action="show"><i class="icon-angle-right"></i> Loans</g:link></li>
+                            <li><g:link controller="property" action="show"><i class="icon-angle-right"></i> Property</g:link></li>
+                            <li><g:link controller="asset" action="show"><i class="icon-angle-right"></i> Assets</g:link></li>
                         </ul>
                     </li>
-                    <li><a href="table.html"><i class="icon-eye-open icon-large"></i> Watchlist</a></li>
-                    <li><a href="table.html"><i class="icon-heart icon-large"></i> Health Check</a></li>
-                    <li><a href="table.html"><i class="icon-bell icon-large"></i> Alerts</a></li>
-                    <li><a href="table.html"><i class="icon-print icon-large"></i> Reports</a></li>
-                    <li><a href="table.html"><i class="icon-bar-chart icon-large"></i> Charts</a></li>
+                    <li><g:link controller="watchList" action="show"><i class="icon-eye-open icon-large"></i> Watchlist</g:link></li>
+                    <li><g:link controller="healthCheck" action="show"><i class="icon-heart icon-large"></i> Health Check</g:link></li>
+                    <li><g:link controller="alert" action="show"><i class="icon-bell icon-large"></i> Alerts</g:link></li>
+                    <li><g:link controller="reports" action="show"><i class="icon-print icon-large"></i> Reports</g:link></li>
+                    <li><g:link controller="charts" action="show"><i class="icon-bar-chart icon-large"></i> Charts</g:link></li>
                 </ul>
                 <!-- END MAIN NAVIGATION -->
 

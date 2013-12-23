@@ -11,6 +11,7 @@ class OrganizationController {
     }
 
     def list(Integer max) {
+		log.info("OrganizationController: Inside Org controller")
         params.max = Math.min(max ?: 10, 100)
         [organizationInstanceList: Organization.list(params), organizationInstanceTotal: Organization.count()]
     }
