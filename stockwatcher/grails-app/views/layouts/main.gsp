@@ -146,7 +146,7 @@
                 <div class="media user-media hidden-phone">
                     <a href="" class="user-link">
                         <img src="images/swt/img/user.gif" alt="" class="media-object img-polaroid user-img">
-                        <span class="label user-label">221</span>
+                        <span class="label user-label">EMPC221</span>
                     </a>
 
                     <div class="media-body hidden-tablet">
