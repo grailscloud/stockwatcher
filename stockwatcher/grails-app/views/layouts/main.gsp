@@ -10,10 +10,12 @@
         <meta name="description" content="MyStocks : Stockwatcher and portfolio tool">
         <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" href="${resource(dir: 'css/swt', file: 'bootstrap.min.css')}" type="text/css">
+        <link rel="stylesheet" href="${resource(dir: 'css/swt', file: 'bootstrap.css')}" type="text/css">
         <link rel="stylesheet" href="${resource(dir: 'css/swt', file: 'bootstrap-responsive.min.css')}" type="text/css">      
         <link rel="stylesheet" href="${resource(dir: 'css/swt', file: 'style.css')}" type="text/css">
         <link rel="stylesheet" href="${resource(dir: 'css/swt', file: 'calendar.css')}" type="text/css">
  		<link rel="stylesheet" href="${resource(dir: 'css/swt', file: 'theme.css')}" type="text/css">
+ 		<link rel="stylesheet" href="${resource(dir: 'css/swt', file: 'custom.css')}" type="text/css">
         
 
         <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -23,6 +25,8 @@
         <link type="text/css" rel="stylesheet" href="assets/Font-awesome/css/font-awesome-ie7.min.css"/>
         <![endif]-->
 		<g:javascript src='swt/vendor/modernizr-2.6.2-respond-1.1.0.min.js'/>
+		<g:javascript src='swt/vendor/main.js'/>
+		
     </head>
     <body>
         <!-- BEGIN header -->
