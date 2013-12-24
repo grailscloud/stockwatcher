@@ -2725,6 +2725,10 @@ table th[class*="span"],
   background-position: -72px -120px;
 }
 
+.icon-angle-right {
+	background-position:-24px -144px
+}
+
 .icon-eye-open {
   background-position: -96px -120px;
 }

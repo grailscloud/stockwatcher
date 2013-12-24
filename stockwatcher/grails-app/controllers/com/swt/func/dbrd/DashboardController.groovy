@@ -11,7 +11,7 @@ class DashboardController {
 	def show(Long id) {
 		log.info("DashboardController: Entry")
 		def dashboardInstance = new Dashboard(params)
-		render(view: "show", model: [ dashboardInstance: dashboardInstance ])
+		render(view: "show", model: [ dashboardInstance: dashboardInstance, activeSection: "dashboard" ])
 	}	
 	
 }

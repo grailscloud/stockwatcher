@@ -150,8 +150,8 @@
                 <!-- .user-media -->
                 <div class="media user-media hidden-phone">
                     <a href="" class="user-link">
-                        <img src="${resource(dir: 'images/swt/img', file: 'user.gif')}  class="media-object img-polaroid user-img">
-                        <span class="label user-label">EMPC221</span>
+                        <%--<img src="${resource(dir: 'images/swt/img', file: 'user.gif')}  class="media-object img-polaroid user-img">
+                        --%><span class="label user-label">EMPC221</span>
                     </a>
 
                     <div class="media-body hidden-tablet">
@@ -168,18 +168,29 @@
 
                 <!-- BEGIN MAIN NAVIGATION -->
                 <ul id="menu" class="unstyled accordion collapse in">
-                	<li><g:link controller="dashboard" action="show"><i class="icon-money icon-large "></i> Dashboard ->${activeSection}<- test
-                	</g:link></a></li>
-                    <li class="accordion-group">
-					<a data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#dashboard-nav">
+                <g:if test="${activeSection == 'dashboard'}">
+                	<li><g:link controller="dashboard" action="show"><i class="icon-money-active icon-large "></i> Dashboard ->${activeSection}<- test
+                	</g:link></li>
+                </g:if>
+                <g:else>
+                	<li><g:link controller="dashboard" action="show"><i class="icon-money-active icon-large "></i> Dashboard ->${activeSection}<- test
+                	</g:link></li>
+                </g:else>
+                	 <g:if test="${activeSection == 'investments'}">
+                        <li class="accordion-group active"> 
+                        <a data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#dashboard-nav">
                            <i class="icon-sun icon-large"></i> Investments
-                    </a>
-					 <g:if test="${activeSection == 'investments'}">
-                        <ul class="collapse in" id="dashboard-nav"> 
+                    	</a>
+                    	<ul class="collapse in" id="dashboard-nav">
                       </g:if>
 					<g:else>
-						<ul class="collapse out" id="dashboard-nav">
-					</g:else>                           
+						<li class="accordion-group">
+						<a data-parent="#menu" data-toggle="collapse" class="accordion-toggle collapsed" data-target="#dashboard-nav">
+                           <i class="icon-sun icon-large"></i> Investments
+                    	</a>
+                    	<ul class="collapse" id="dashboard-nav">
+					</g:else>
+					                           
                             <li><g:link controller="stocks" action="show"><i class="icon-angle-right"></i> Stocks<span
                                 class="label label-inverse pull-right">7</span></g:link></li>
                             <li><g:link controller="mutualFunds" action="show"><i class="icon-angle-right"></i> Mutual Funds</g:link></li>
@@ -279,7 +290,8 @@
 
         <script src="js/swt/fullcalendar/fullcalendar/fullcalendar.min.js"></script>
         
-        <script src="js/swt/main.js"></script>
+        <script src="js/swt/main.js">
+        </script>
         
 
         <script type="text/javascript">
