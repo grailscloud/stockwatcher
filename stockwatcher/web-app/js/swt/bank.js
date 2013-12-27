@@ -7,18 +7,18 @@ function setJQActions() {
 	        $('#editModal').modal({
 	            show: true
 	        });
-	        var val1 = $(this).closest('tr').children('td').eq(1),
-	            val2 = $(this).closest('tr').children('td').eq(2),
-	            val3 = $(this).closest('tr').children('td').eq(3);
-	        $('#editModal #fName').val(val1.html());
-	        $('#editModal #lName').val(val2.html());
-	        $('#editModal #uName').val(val3.html());
+	        var val1 = $(this).closest('tr').children('td').eq(0),
+	            val2 = $(this).closest('tr').children('td').eq(1),
+	            val3 = $(this).closest('tr').children('td').eq(2);
+	        $('#editModal #name').val(val1.html());
+	        $('#editModal #revenue').val(val2.html());
+	        $('#editModal #branches').val(val3.html());
 
 
 	        $('#editModal #sbmtBtn').on('click', function() {
-	            val1.html($('#editModal #fName').val());
-	            val2.html($('#editModal #lName').val());
-	            val3.html($('#editModal #uName').val());
+	            val1.html($('#editModal #name').val());
+	            val2.html($('#editModal #revenue').val());
+	            val3.html($('#editModal #branches').val());
 	        });
 	 });
 }
