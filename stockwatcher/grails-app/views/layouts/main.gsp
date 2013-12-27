@@ -232,7 +232,6 @@ ul#menu > li.active > a {
             </div>
             <!-- END CONTENT -->
 
-
             <!-- #push do not remove -->
             <div id="push"></div>
             <!-- /#push -->
@@ -283,11 +282,10 @@ ul#menu > li.active > a {
 		<g:javascript src="swt/jquery.flot.selection.js" />
 		<g:javascript src="swt/jquery.flot.resize.js" />
 		<g:javascript src="swt/fullcalendar.min.js" />
-		<g:javascript src="swt/main.js" />
-		
+		<g:javascript src="swt/main.js" />		
         <script type="text/javascript">
             $(function() {
-                dashboard();
+            	setJQActions();              
             });
         </script>
 		<g:javascript src="swt/style-switcher.js" />

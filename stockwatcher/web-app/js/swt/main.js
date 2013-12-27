@@ -822,6 +822,8 @@ function formWizard() {
  BEGIN TABLES.HTML SCRIPTS
  ---------------------------------------------------------*/
 function metisTable() {
+	
+	alert("inside js");
   
       /*----------- BEGIN TABLESORTER CODE -------------------------*/
     /* required jquery.tablesorter.min.js*/
