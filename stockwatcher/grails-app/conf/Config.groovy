@@ -82,11 +82,11 @@ log4j = {
 		console name:'stdout',
 				layout: pattern(conversionPattern: '[%d{dd-MMM-yyyy HH:mm:ss:SSS}] [%t] %-5p %c{2}: %m%n')
 
-		rollingFile name: 'StockWatcherLog',
+	/*	rollingFile name: 'StockWatcherLog',
 				file: "${stockwatcher.logfile.path}/${appName}.log".toString(),
 				maxFileSize:'1024',
 				maxBackupIndex:5,
-				layout:pattern(conversionPattern: '%d{[EEE, dd-MMM-yyyy HH:mm:ss.SSS]} [%t] %-5p %c %x - %m%n')
+				layout:pattern(conversionPattern: '%d{[EEE, dd-MMM-yyyy HH:mm:ss.SSS]} [%t] %-5p %c %x - %m%n')*/
 
 	}
 	root {
