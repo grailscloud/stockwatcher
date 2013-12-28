@@ -104,7 +104,8 @@ log4j = {
 				'org.springframework',
 				'org.hibernate',
 				'net.sf.ehcache.hibernate'
-		info 'com.swt.cml'
+		//info 'com.swt.cml'
+		info 'BootStrap'
 		// Enable Hibernate SQL logging with param values
 		//trace 'org.hibernate.type'
 		//debug 'org.hibernate.SQL'

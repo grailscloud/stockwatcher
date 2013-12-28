@@ -2,17 +2,19 @@ package com.swt.cml.admin
 
 import org.springframework.dao.DataIntegrityViolationException
 
-class BankController {
+class BankController {	
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
+	def bankService
+	
     def index() {
         redirect(action: "list", params: params)
     }
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        [bankInstanceList: Bank.list(params), bankInstanceTotal: Bank.count()]
+        [bankInstanceList: bankService.listBanks(params.max,params), bankInstanceTotal: Bank.count()]
     }
 
     def create() {
@@ -21,31 +23,32 @@ class BankController {
     }
 
     def save() {
-		log.info("BankController:save   "+params)
-        def bankInstance = new Bank(params)		
-        if (!bankInstance.save(flush: true)) {
+		log.info("BankController:save   :Entry "+params)
+        def bankInstance = new Bank(params)	
+		bankInstance = bankService.save(bankInstance);
+        if (bankInstance.hasErrors()) {			
             render(view: "create", model: [bankInstance: bankInstance])
             return
         }
-
         flash.message = message(code: 'default.created.message', args: [message(code: 'bank.label', default: 'Bank'), bankInstance.id])
-        redirect(action: "show", id: bankInstance.id)
+		log.info("BankController:save   :Exit "+params)
+		redirect(action: "show", id: bankInstance.id)
+		
     }
 
     def show(Long id) {
 		log.info("BankController:show   "+id)
-        def bankInstance = Bank.get(id)
+        def bankInstance = bankService.getBank(id)
         if (!bankInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'bank.label', default: 'Bank'), id])
             redirect(action: "list")
             return
         }
-
         [bankInstance: bankInstance]
     }
 
     def edit(Long id) {
-        def bankInstance = Bank.get(id)
+        def bankInstance = bankService.getBank(id)
         if (!bankInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'bank.label', default: 'Bank'), id])
             redirect(action: "list")
@@ -56,7 +59,7 @@ class BankController {
     }
 
     def update(Long id, Long version) {
-        def bankInstance = Bank.get(id)
+        def bankInstance = (Bank)bankService.getBank(id)
         if (!bankInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'bank.label', default: 'Bank'), id])
             redirect(action: "list")
@@ -74,8 +77,8 @@ class BankController {
         }
 
         bankInstance.properties = params
-
-        if (!bankInstance.save(flush: true)) {
+		bankInstance = bankService.save(bankInstance)
+        if (!bankInstance.hasErrors()) {
             render(view: "edit", model: [bankInstance: bankInstance])
             return
         }
@@ -84,16 +87,9 @@ class BankController {
         redirect(action: "show", id: bankInstance.id)
     }
 
-    def delete(Long id) {
-        def bankInstance = Bank.get(id)
-        if (!bankInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'bank.label', default: 'Bank'), id])
-            redirect(action: "list")
-            return
-        }
-
+    def delete(Long id) {        
         try {
-            bankInstance.delete(flush: true)
+            bankService.delete(id)
             flash.message = message(code: 'default.deleted.message', args: [message(code: 'bank.label', default: 'Bank'), id])
             redirect(action: "list")
         }
