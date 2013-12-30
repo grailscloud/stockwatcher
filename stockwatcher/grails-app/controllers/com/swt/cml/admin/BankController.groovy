@@ -6,6 +6,8 @@ class BankController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
+	def authenticationService
+	
 	def bankService
 	
     def index() {
@@ -13,8 +15,18 @@ class BankController {
     }
 
     def list(Integer max) {
+		log.info("BankController list : Entry "+session.user)
+		
+		if (!authenticationService.isLoggedIn(request)) {
         params.max = Math.min(max ?: 10, 100)
-        [bankInstanceList: bankService.listBanks(params.max,params), bankInstanceTotal: Bank.count()]
+		log.info("user authenticated ---")
+        [bankInstanceList: bankService.listBanks(params.max,params), bankInstanceTotal: Bank.count()]		
+		}
+		else
+		{
+			log.info("user not authenticated ---")
+			[bankInstanceList: bankService.listBanks(params.max,params), bankInstanceTotal: Bank.count()]
+		}
     }
 
     def create() {

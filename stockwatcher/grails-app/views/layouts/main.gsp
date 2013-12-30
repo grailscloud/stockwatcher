@@ -105,7 +105,7 @@ ul#menu > li.active > a {
                             <div class="nav-collapse collapse">
                                 <!-- .nav -->
                                 <ul class="nav">
-                                    <li class="active"><g:link controller="book" action="list">Dashboard</g:link></li>
+                                    <li class="active"><g:link controller="book" action="list">Dashboard</g:link><auth:ifLoggedIn> You are logged in!</auth:ifLoggedIn></li>
                                     <li class="dropdown">
                                         <a data-toggle="dropdown" class="dropdown-toggle" href="/stockwatcher/#">
                                             Investments <b class="caret"></b>
@@ -164,7 +164,7 @@ ul#menu > li.active > a {
                     </a>
 
                     <div class="media-body hidden-tablet">
-                        <h5 class="media-heading">Cloudgrail</h5>
+                        <h5 class="media-heading"><auth:user/> - Cloudgrail</h5>
                         <ul class="unstyled user-info">
                             <li><a href="">Administrator</a></li>
                             <li>Last Access : <br>

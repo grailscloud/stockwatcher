@@ -43,7 +43,7 @@ class Bank {
 
 	static mapping = {
 		table name:'BANK'
-		id column: 'ID', generator:'sequence'//,params:[sequence:'bank_seq_id']
+		id column: 'ID'//, generator:'sequence'//,params:[sequence:'bank_seq_id']
 		name column: 'BANK_N'
 		revenue column: 'REVENUE'
 		branches column: 'BRNCH_CNT'
