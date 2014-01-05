@@ -4,7 +4,7 @@ import org.springframework.dao.DataIntegrityViolationException
 
 class BankController {	
 
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+    //static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
 	def authenticationService
 	
@@ -36,7 +36,22 @@ class BankController {
 
     def save() {
 		log.info("BankController:save   :Entry "+params)
-        def bankInstance = new Bank(params)	
+        def bankInstance = null;//new Bank(params)	
+		log.info(params)
+		if(params.editedBankId != "-1")
+		{
+			log.info("Inside update block")
+			long bankId = Integer.parseInt(params.editedBankId);
+			bankInstance = bankService.getBank(bankId);			
+			bankInstance.properties = params;
+			bankInstance.id= Integer.parseInt(params.editedBankId)
+		}
+		else
+		{
+			log.info("Inside create block")
+			bankInstance = new Bank(params);
+		}
+			
 		bankInstance = bankService.save(bankInstance);
         if (bankInstance.hasErrors()) {			
             render(view: "create", model: [bankInstance: bankInstance])
@@ -44,7 +59,7 @@ class BankController {
         }
         flash.message = message(code: 'default.created.message', args: [message(code: 'bank.label', default: 'Bank'), bankInstance.id])
 		log.info("BankController:save   :Exit "+params)
-		redirect(action: "show", id: bankInstance.id)
+		redirect(action: "list")
 		
     }
 
@@ -59,7 +74,7 @@ class BankController {
         [bankInstance: bankInstance]
     }
 
-    def edit(Long id) {
+     /*def edit(Long id) {
         def bankInstance = bankService.getBank(id)
         if (!bankInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'bank.label', default: 'Bank'), id])
@@ -70,7 +85,7 @@ class BankController {
         [bankInstance: bankInstance]
     }
 
-    def update(Long id, Long version) {
+   def update(Long id, Long version) {
         def bankInstance = (Bank)bankService.getBank(id)
         if (!bankInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'bank.label', default: 'Bank'), id])
@@ -97,17 +112,19 @@ class BankController {
 
         flash.message = message(code: 'default.updated.message', args: [message(code: 'bank.label', default: 'Bank'), bankInstance.id])
         redirect(action: "show", id: bankInstance.id)
-    }
+    }*/
 
     def delete(Long id) {        
         try {
+			log.info(params);
             bankService.delete(id)
             flash.message = message(code: 'default.deleted.message', args: [message(code: 'bank.label', default: 'Bank'), id])
             redirect(action: "list")
         }
         catch (DataIntegrityViolationException e) {
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'bank.label', default: 'Bank'), id])
-            redirect(action: "show", id: id)
+            redirect(action: "list")
         }
     }
+	
 }

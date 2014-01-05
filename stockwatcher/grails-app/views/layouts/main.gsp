@@ -199,6 +199,19 @@ ul#menu > li.active > a {
                      <li><a href="/stockwatcher/"><i class="icon-table icon-large"></i> Reports</a></li>
                      <li><a href="/stockwatcher/"><i class="icon-table icon-large"></i> Charts</a></li>                     
                      <li><a href="http://demo.onokumus.com/metis/v12/login.html"><i class="icon-signin icon-large"></i> Login Page</a></li>
+                    <li class="accordion-group">
+                        <a data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#admin-nav">
+                            <i class="icon-dashboard icon-large"></i> Admin <span class="label label-inverse pull-right">2</span>
+                        </a>
+                        <%-- <ul class="collapse in" id="dashboard-nav"> --%>
+                        <ul class="collapse" id="admin-nav">
+                            <li><g:link controller="bank" action="list"><i class="icon-angle-right"></i> Banks</g:link></li>
+                            <li><g:link controller="company" action="list"><i class="icon-angle-right"></i> Company</a></g:link></li>
+                            <li><g:link controller="fund" action="list"><i class="icon-angle-right"></i> Mutual Fund</a></g:link></li>
+                            <li><g:link controller="sector" action="list"><i class="icon-angle-right"></i> Sector</a></g:link></li>
+                        </ul>
+                    </li>
+
                 </ul>
                 <!-- END MAIN NAVIGATION -->
 

@@ -6,7 +6,7 @@ class Bank {
 
     static constraints = {
 		id unique:true,blank:false
-		name size: 5..20, blank: false, unique: true
+		name size: 5..20, blank: false
         revenue min: 0.0 as Double, max: 9999999999.0 as Double
         branches min: 1, max: 10000
         createdTime max: new Date(), blank: true, nullable: true

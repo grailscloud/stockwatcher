@@ -34,17 +34,22 @@
                <tbody>
 		       <g:each in="${bankInstanceList}" status="i" var="bankInstance">
 			   <tr>
-			       <td><g:link action="show" id="${bankInstance.id}">${fieldValue(bean: bankInstance, field: "name")}</g:link></td>			       					
-			       <td>${fieldValue(bean: bankInstance, field: "revenue")}</td>			       					
-			       <td>${fieldValue(bean: bankInstance, field: "branches")}</td>
 			       <td>
-				   <button class="btn edit"><i class="icon-edit"></i></button>
-				   <button class="btn btn-danger remove" data-toggle="confirmation"><i class="icon-remove"></i></button>
+			       <input type="hidden" id="bankId" name="bankId" value="${fieldValue(bean: bankInstance, field: "id")}">
+			       <g:link action="show" id="${bankInstance.id}">${fieldValue(bean: bankInstance, field: "name")}</g:link>
+			       </td>			       					
+			       <td>${fieldValue(bean: bankInstance, field: "revenue")}</td>			       					
+			       <td>${fieldValue(bean: bankInstance, field: "branches")}</td>			       
+			       <td>
+					   <button class="btn edit"><i class="icon-edit"></i></button>
+					   <%--<button class="btn btn-danger remove" data-toggle="confirmation"><i class="icon-remove"></i></button>--%>
+					   <g:link class="btn btn-danger remove" action="delete" controller="bank" id="${bankInstance.id}"><i class="icon-remove"></i></g:link>
 			       </td>
 			   </tr>  
 		       </g:each>
                </tbody>
            </table>
+           <button id="addEntity">Create</button>
        </div>
 	
 			<div class="pagination">
@@ -55,8 +60,9 @@
         <div id="editModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Ã—</button>
-                <h3 id="editModalLabel"><i class="icon-edit"></i> Edit Bank</h3>
+                <h3 id="editModalLabel"><i class="icon-edit"></i> Add/Edit Bank</h3>
             </div>
+            <g:form class="bankform" url="[controller:'bank',action:'save']">
             <div class="modal-body">
                 <div class="control-group">
                     <label for="name" class="control-label">${message(code: 'bank.name.label', default: 'Name')}</label>
@@ -64,6 +70,7 @@
                         <input type="text" id="name" name="name">
                     </div>
                 </div>
+                <input type="hidden" id="editedBankId" name="editedBankId">
                 <div class="control-group">
                     <label for="revenue" class="control-label">${message(code: 'bank.revenue.label', default: 'Revenue')}</label>
                     <div class="controls">
@@ -77,9 +84,10 @@
                     </div>
                 </div>
                 <div class="form-actions">
-                    <button id="sbmtBtn" type="submit" class="btn btn-primary" data-dismiss="modal">Save</button>
+                    <g:submitButton class="btn btn-primary" name="submitButton" value="Save" />
                 </div>
             </div>
+            </g:form>
             <div class="modal-footer">
                 <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
             </div>
