@@ -1,7 +1,4 @@
 function setJQActions() {
-	/* $('#actionTable button.remove').on('click', function() {
-	      $(this).closest('tr').remove();
-	    });	   */         	
 	
 	 $('#actionTable button.edit').on('click', function() {
 	        $('#editModal').modal({
@@ -16,17 +13,9 @@ function setJQActions() {
 	        $('#editModal #editedBankId').val(val4);
 	        $('#editModal #revenue').val(val2.html());
 	        $('#editModal #branches').val(val3.html());
-	        //$('#editModal #bankId').val(val4.html());
-
-	      /*  $('#editModal #sbmtBtn').on('click', function() {
-	            val1.html($('#editModal #name').val());
-	            val2.html($('#editModal #revenue').val());
-	            val3.html($('#editModal #branches').val());
-	        });*/
 	 });
 	 
 	 $('#addEntity').on('click', function() {
-		 
 		 $('#editModal').modal({
 	            show: true
 	        });

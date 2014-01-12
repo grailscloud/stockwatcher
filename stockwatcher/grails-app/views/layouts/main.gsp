@@ -123,7 +123,18 @@ ul#menu > li.active > a {
                                     <li><g:link controller="book" action="list">Health Check</g:link></li>
                                     <li><g:link controller="book" action="list">Alerts</g:link></li>
                                     <li><g:link controller="book" action="list">Reports</g:link></li>
-                                    <li><g:link controller="book" action="list">Charts</g:link></li> 
+                                    <li><g:link controller="book" action="list">Charts</g:link></li>
+                                    <li class="dropdown">
+                                        <a data-toggle="dropdown" class="dropdown-toggle" href="/stockwatcher/#">
+                                            Admin <b class="caret"></b>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><g:link controller="bank" action="list">Banks</g:link></li>
+                                            <li><g:link controller="company" action="list">Companies</g:link></li>
+                                            <li><g:link controller="fund" action="list">Mutual Fund</g:link></li>
+                                            <li><g:link controller="sector" action="list">Sectors</g:link></li>
+                                        </ul>
+                                    </li> 
                                 </ul>
                                 <!-- /.nav -->
                             </div>

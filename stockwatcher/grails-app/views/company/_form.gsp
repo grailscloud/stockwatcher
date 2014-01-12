@@ -82,7 +82,7 @@
 	<g:field name="pe" value="${fieldValue(bean: companyInstance, field: 'pe')}" required=""/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'sector', 'error')} required">
+<%--<div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'sector', 'error')} required">
 	<label for="sector">
 		<g:message code="company.sector.label" default="Sector" />
 		<span class="required-indicator">*</span>
@@ -90,3 +90,4 @@
 	<g:select id="sector" name="sector.id" from="${com.swt.cml.admin.Sector.list()}" optionKey="id" required="" value="${companyInstance?.sector?.id}" class="many-to-one"/>
 </div>
 
+--%>
